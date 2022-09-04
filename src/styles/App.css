@@ -1,0 +1,49 @@
+html, body{
+  height: 100%;
+}
+
+.text-font-size{
+  font-size: 10px;
+}
+
+.desktop-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem;
+  width: fit-content;
+}
+
+.windows-icon-container{
+  width: max-content;
+  margin-bottom: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+}
+
+.windows-icon{
+  width: 35px;
+  -webkit-user-drag: none;
+}
+
+.App-Bar{
+  bottom: 0;
+  top: auto !important;
+}
+
+.ToolBar{
+  justify-content: 'space-between'
+}
+
+.list-dropdown-container{
+  position: absolute !important;
+  left: 0;
+  bottom: 100%;
+}
+
+.list-dropdown-item{
+  padding: 0px 40px 0px 40px !important;
+}

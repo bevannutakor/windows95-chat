@@ -2,8 +2,8 @@ import React, {useState, useContext} from 'react';
 import { AppBar, Toolbar, Button, List, ListItem, Divider} from 'react95';
 import { firebase } from '../Models/firebaseConfig';
 import windowsLogo from '../Assets/windows.png'
-import SignUp from './signUp';
-import SignIn from './signIn';
+import SignUp from './SignUp';
+import SignIn from './SignIn';
 
 export default function TaskBar(){
     const [openAppBar, setOpenAppBar] = useState(false);

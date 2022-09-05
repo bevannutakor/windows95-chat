@@ -46,4 +46,29 @@ html, body{
 
 .list-dropdown-item{
   padding: 0px 40px 0px 40px !important;
+  cursor: pointer !important;
+}
+
+.window{
+  width: 30%;
+}
+
+.window-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-text-field{
+  margin-bottom: 2vh;
+}
+
+.chatroom-button-group{
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.rooms-list{
+  width: 100% !important;
 }

@@ -6,6 +6,7 @@ import GlobalStyles from './styles/GlobalStyles';
 import BodyWrapper from './styles/BodyWrapper';
 import './styles/App.css'
 import Home from './Home';
+import { AuthProvider } from './Components/Auth'
 
 export default function App() {
   return(
@@ -13,7 +14,9 @@ export default function App() {
     <GlobalStyles />
     <ThemeProvider theme={original}>
       <BodyWrapper>
-        <Home/>
+        <AuthProvider>
+          <Home/>
+        </AuthProvider>
       </BodyWrapper>
     </ThemeProvider>
     </>

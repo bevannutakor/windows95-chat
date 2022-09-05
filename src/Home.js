@@ -5,12 +5,14 @@ import computer from './Assets/computer_explorer.png';
 import search from './Assets/search_directory.png';
 import folder from './Assets/directory_closed_cool.png';
 
+import ChatRooms from './Components/ChatRooms/chatrooms';
 import TaskBar from './Components/TaskBar';
 
 export default function Home(){
     const [personalChatModal, setPersonalChatModal] = useState(false);
-    const [chatRoomModal, setchatRoomModal] = useState(false);
+    const [chatRoomModal, setChatRoomModal] = useState(false);
     const [searchModal, setSearchModal] = useState(false);
+
     return(
         <>
             <div className="desktop-container">
@@ -22,7 +24,7 @@ export default function Home(){
                 </Draggable>
 
                 <Draggable>
-                    <div className="windows-icon-container">
+                    <div className="windows-icon-container" onClick={() => setChatRoomModal(true)}>
                         <img src={world} className="windows-icon" alt=""/>
                         <div>
                             <p className="text-font-size">Chatrooms</p>
@@ -48,6 +50,11 @@ export default function Home(){
                     </div>
                 </Draggable>
             </div>
+            
+            {chatRoomModal && (
+                <ChatRooms setChatRoomModal={setChatRoomModal}/>
+            )}
+
             <TaskBar/>
         </>
     ) 

@@ -12,7 +12,7 @@ export default function Home(){
     const [personalChatModal, setPersonalChatModal] = useState(false);
     const [chatRoomModal, setChatRoomModal] = useState(false);
     const [searchModal, setSearchModal] = useState(false);
-
+    console.log("something")
     return(
         <>
             <div className="desktop-container">

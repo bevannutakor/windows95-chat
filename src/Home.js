@@ -5,7 +5,7 @@ import computer from './Assets/computer_explorer.png';
 import search from './Assets/search_directory.png';
 import folder from './Assets/directory_closed_cool.png';
 
-import ChatRooms from './Components/ChatRooms/ChatRooms';
+import ChatRooms from './Components/ChatRoomComponents/chatrooms';
 import TaskBar from './Components/TaskBar';
 
 export default function Home(){

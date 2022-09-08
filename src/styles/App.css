@@ -6,6 +6,10 @@ html, body{
   font-size: 10px;
 }
 
+.width-100{
+  width: 100% !important;
+}
+
 .desktop-container{
   display: flex;
   flex-direction: column;
@@ -71,4 +75,10 @@ html, body{
 
 .rooms-list{
   width: 100% !important;
+}
+
+.createRoomForm{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

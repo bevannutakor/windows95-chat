@@ -12,14 +12,13 @@ export default function Home(){
     const [personalChatModal, setPersonalChatModal] = useState(false);
     const [chatRoomModal, setChatRoomModal] = useState(false);
     const [searchModal, setSearchModal] = useState(false);
-    console.log("something")
     return(
         <>
             <div className="desktop-container">
                 <Draggable>
                     <div className="windows-icon-container">
                         <img src={computer} className="windows-icon" alt=""/>
-                        <p className="text-font-size">Personal Chats</p>
+                        <p className="text-font-size">All Chats</p>
                     </div>
                 </Draggable>
 

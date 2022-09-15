@@ -5,7 +5,7 @@ import Draggable from 'react-draggable';
 import AllChatRooms from './AllChatRooms';
 import CreateChatRoom from './CreateChatRoom';
 import {AuthContext} from '../Auth';
-export default function ChatRooms(props){
+export default function ChatRoomOptions(props){
     const { currentUser } = useContext(AuthContext);
     const { setChatRoomModal } = props
 

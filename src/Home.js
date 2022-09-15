@@ -5,7 +5,7 @@ import computer from './Assets/computer_explorer.png';
 import search from './Assets/search_directory.png';
 import folder from './Assets/directory_closed_cool.png';
 
-import ChatRooms from './Components/ChatRoomComponents/ChatRooms';
+import ChatRoomOptions from './Components/ChatRoomComponents/ChatRoomOptions';
 import TaskBar from './Components/TaskBar';
 
 export default function Home(){
@@ -51,7 +51,7 @@ export default function Home(){
             </div>
             
             {chatRoomModal && (
-                <ChatRooms setChatRoomModal={setChatRoomModal}/>
+                <ChatRoomOptions setChatRoomModal={setChatRoomModal}/>
             )}
 
             <TaskBar/>

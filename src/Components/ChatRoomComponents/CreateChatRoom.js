@@ -28,7 +28,7 @@ export default function CreateChatRoom(props){
                         </Button>
                     </WindowHeader>
                     <WindowContent>
-                        <form className="createRoomForm" onSubmit={handleCreateRoom}>
+                        <form className="createForm" onSubmit={handleCreateRoom}>
                             <TextField placeholder="Enter name of your chatroom" name="roomName" type="text" className="width-100"/>
                             <Button type="submit">Create</Button>
                         </form>

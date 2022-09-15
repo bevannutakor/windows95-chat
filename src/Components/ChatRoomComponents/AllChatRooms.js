@@ -2,12 +2,18 @@ import React, {useState, useEffect} from 'react';
 import Draggable from 'react-draggable'
 import {Window, WindowHeader, WindowContent, Button, List, ListItem, Divider} from 'react95';
 
+import Chatroom from './Chatroom';
 import { db } from '../../Models/firebaseConfig';
 
 export default function AllChatRooms(props){ 
     const { setAllRoomsModal } = props;
-    const [chatroomName, setChatRoomName] = useState([])
+    const [chatroomName, setChatRoomName] = useState([]);
+    const [chatroom, setChatroom] = useState({isOpen: false, roomId: '', roomName: ''});
     
+    const openChatRoom = (e, roomId, roomName) => {
+        e.preventDefault();
+        setChatroom({isOpen: true, roomId: roomId, roomName: roomName});
+    }
     useEffect(() => {
         if(db){
             const unsubscribe = db
@@ -25,6 +31,7 @@ export default function AllChatRooms(props){
     }, [db])
     return (
         <>
+        {!chatroom.isOpen && 
             <Draggable>
                 <Window className="window">
                     <WindowHeader className="window-header">
@@ -37,14 +44,18 @@ export default function AllChatRooms(props){
                         <List className="rooms-list">
                             {chatroomName && chatroomName.map(room => (
                                 <>
-                                    <ListItem key={room.id}>{room.data.name}</ListItem>
-                                    <Divider/>
+                                    <ListItem key={room.id} onClick={(e) => openChatRoom(e, room.id, room.data.name)}>{room.data.name}</ListItem>
                                 </>
                             ))}
                         </List>
                     </WindowContent>
                 </Window>
             </Draggable>
+        }
+
+        {chatroom.isOpen && 
+            <Chatroom chatroom={chatroom} setChatroom={setChatroom}/>
+        }
         </>
     )
 }

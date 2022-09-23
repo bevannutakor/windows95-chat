@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import Draggable from 'react-draggable'
 import { v4 as uuidv4} from 'uuid';
-import {Window, WindowHeader, WindowContent, Button, TextField, List, ListItem, Divider} from 'react95';
+import {Window, WindowHeader, WindowContent, Button, TextField, Fieldset, Cutout} from 'react95';
 
 import { db } from '../../Models/firebaseConfig';
 import { AuthContext } from '../Auth';
@@ -9,6 +9,8 @@ import { AuthContext } from '../Auth';
 export default function Chatroom(props){
     const { currentUser } = useContext(AuthContext);
     const { chatroom, setChatroom } = props;
+
+    const [messageList, setMessageList] = useState([]);
     //start messages collection
     //pull messages from chatroom id
     const sendMessage = (e) => {
@@ -24,10 +26,30 @@ export default function Chatroom(props){
             message: message.value,
             messageId: generateMessageId,
             userId: currentUser.uid,
-            //created: db.FieldValue.serverTimestamp()
-            //userName: currentUser.displayName
+            created: new Date(),
+            userName: currentUser.displayName
         })
     }
+
+    //use useEffect to update messages in real time
+    useEffect(() => {
+        if(db){
+            const unsubscribe = db
+                .collection("chat-rooms")
+                .doc(chatroom.roomId)
+                .collection("messages")
+                //.orderBy("timeStamp")
+                .onSnapshot(querySnapshot => {
+                    const messageData = querySnapshot.docs.map(doc => ({
+                        id: doc.id,
+                        data: doc.data()
+                    }))
+                    setMessageList(messageData);
+                })
+            return unsubscribe;
+        }
+    }, [db])
+
     return(
         <Draggable>
             <Window className="window">
@@ -38,6 +60,13 @@ export default function Chatroom(props){
                     </Button>
                 </WindowHeader>
                 <WindowContent>
+                    <Cutout className="messagesContainer">
+                        {messageList && messageList.map((message) => (
+                            <Fieldset id={message.id} label={message.data.userName}>
+                                <span>{message.data.message}</span>
+                            </Fieldset>
+                        ))}
+                    </Cutout>
                     <form className="createForm" onSubmit={sendMessage}>
                         <TextField className="width-100" name="message" type="text" placeholder="message"/>
                         <Button type="submit">Send</Button>

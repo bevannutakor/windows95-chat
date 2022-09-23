@@ -9,9 +9,14 @@ export default function SignUp(props){
     const { currentUser } = useContext(AuthContext);
     const handleSignUp = (e) => {
         e.preventDefault();
-        const { email, password } = e.target.elements;
+        const { email, username, password } = e.target.elements;
         try{
-            firebase.auth().createUserWithEmailAndPassword(email.value, password.value);
+            firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
+                .then((result) => {
+                   return result.user.updateProfile({
+                        displayName: username.value
+                    })
+                });
         } catch (error){
             alert(error);
         }

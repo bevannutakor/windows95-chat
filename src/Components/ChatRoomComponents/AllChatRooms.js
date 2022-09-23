@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Draggable from 'react-draggable'
-import {Window, WindowHeader, WindowContent, Button, List, ListItem, Divider} from 'react95';
+import {Window, WindowHeader, WindowContent, Button, List, ListItem, Cutout} from 'react95';
 
 import Chatroom from './Chatroom';
 import { db } from '../../Models/firebaseConfig';
@@ -41,13 +41,15 @@ export default function AllChatRooms(props){
                         </Button>
                     </WindowHeader>
                     <WindowContent>
-                        <List className="rooms-list">
-                            {chatroomName && chatroomName.map(room => (
-                                <>
-                                    <ListItem key={room.id} onClick={(e) => openChatRoom(e, room.id, room.data.name)}>{room.data.name}</ListItem>
-                                </>
-                            ))}
-                        </List>
+                        <Cutout style={{ height: '200px' }}>
+                            <List className="rooms-list">
+                                {chatroomName && chatroomName.map(room => (
+                                    <>
+                                        <ListItem key={room.id} onClick={(e) => openChatRoom(e, room.id, room.data.name)}>{room.data.name}</ListItem>
+                                    </>
+                                ))}
+                            </List>
+                        </Cutout>
                     </WindowContent>
                 </Window>
             </Draggable>

@@ -82,3 +82,8 @@ html, body{
   justify-content: space-between;
   align-items: center;
 }
+
+.messagesContainer{
+  margin-bottom: 3vh;
+  height: 200px;
+}

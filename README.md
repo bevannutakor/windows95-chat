@@ -1,1 +1,1 @@
-Chat app with retro windows theme: https://windows98-chat.vercel.app/
+Windows 95 Themed chat App: https://windows98-chat.vercel.app/

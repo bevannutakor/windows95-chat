@@ -38,7 +38,7 @@ export default function Chatroom(props){
                 .collection("chat-rooms")
                 .doc(chatroom.roomId)
                 .collection("messages")
-                //.orderBy("timeStamp")
+                .orderBy("created")
                 .onSnapshot(querySnapshot => {
                     const messageData = querySnapshot.docs.map(doc => ({
                         id: doc.id,

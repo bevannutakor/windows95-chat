@@ -4,8 +4,11 @@ import { firebase } from '../Models/firebaseConfig';
 import windowsLogo from '../Assets/windows.png'
 import SignUp from './SignUp';
 import SignIn from './SignIn';
+import {AuthContext} from './Auth';
 
 export default function TaskBar(){
+    const { currentUser } = useContext(AuthContext);
+
     const [openAppBar, setOpenAppBar] = useState(false);
     const [openSignUp, setOpenSignUp] = useState(false);
     const [openSignIn, setOpenSignIn] = useState(false);
@@ -30,8 +33,8 @@ export default function TaskBar(){
                             <img src={windowsLogo} alt="" className="windows-start-logo"/>
                             Start
                         </Button>
-                        {openAppBar && (
-
+                        {openAppBar && !currentUser && (
+                            
                             <List className="list-dropdown-container">
                                 <ListItem className="list-dropdown-item" onClick={signUpModal}>
                                     <p>Sign Up</p>
@@ -41,6 +44,14 @@ export default function TaskBar(){
                                     <p>Log in</p>
                                 </ListItem>
                                 <Divider />
+                                <ListItem className="list-dropdown-item" onClick={firebase.auth().signOut()}>
+                                    <p>Log out</p>
+                                </ListItem>
+                            </List>
+                        )}
+
+                        {openAppBar && currentUser && (
+                            <List className="list-dropdown-container">
                                 <ListItem className="list-dropdown-item" onClick={firebase.auth().signOut()}>
                                     <p>Log out</p>
                                 </ListItem>

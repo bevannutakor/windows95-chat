@@ -7,11 +7,13 @@ import folder from './Assets/directory_closed_cool.png';
 
 import ChatRoomOptions from './Components/ChatRoomComponents/ChatRoomOptions';
 import TaskBar from './Components/TaskBar';
+import About from './Components/About';
 
 export default function Home(){
-    const [personalChatModal, setPersonalChatModal] = useState(false);
+    //const [personalChatModal, setPersonalChatModal] = useState(false);
     const [chatRoomModal, setChatRoomModal] = useState(false);
-    const [searchModal, setSearchModal] = useState(false);
+    //const [searchModal, setSearchModal] = useState(false);
+    const [aboutModal, setAboutModal] = useState(false);
     return(
         <>
             <div className="desktop-container">
@@ -41,7 +43,7 @@ export default function Home(){
                 </Draggable>
 
                 <Draggable>
-                    <div className="windows-icon-container">
+                    <div className="windows-icon-container" onClick={() => setAboutModal(true)}>
                         <img src={folder} className="windows-icon" alt=""/>
                         <div>
                             <p className="text-font-size">About</p>
@@ -52,6 +54,10 @@ export default function Home(){
             
             {chatRoomModal && (
                 <ChatRoomOptions setChatRoomModal={setChatRoomModal}/>
+            )}
+
+            {aboutModal && (
+                <About setAboutModal={setAboutModal}/>
             )}
 
             <TaskBar/>
